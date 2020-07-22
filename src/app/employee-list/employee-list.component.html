@@ -8,15 +8,18 @@
                 <tr>
                     <th>Firstname</th>
                     <th>Lastname</th>
-                    <th>Email</th>
-                    <th>Actions</th>
+                    <th>Salary</th>
+                    <th>PhoneNumber</th>
+                    <th>Restaurant</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let employee of employees | async">
                     <td>{{employee.firstName}}</td>
                     <td>{{employee.lastName}}</td>
-                    <td>{{employee.emailId}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td>{{employee.phoneNumber}}</td>
+                    <td>{{employee.restaurant}}</td>
                     <td><button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
                         <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
                         <button (click)="employeeUpdate(employee.id)" class="btn btn-success" style="margin-left: 10px">Update</button>

@@ -1,6 +1,9 @@
 import { EmployeeService } from './../employee.service';
 import { Employee } from './../employee';
 import { Component, OnInit } from '@angular/core';
+import { Restaurant } from '../restaurant';
+import { Observable } from 'rxjs';
+import { RestaurantService } from '../restaurant.service';
 
 @Component({
   selector: 'app-create-employee',
@@ -9,12 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEmployeeComponent implements OnInit {
 
+  restaurants: Observable<Restaurant[]>;
   employee: Employee = new Employee();
   submitted = false;
-
-  constructor(private employeeService: EmployeeService) { }
+restaurant : Restaurant;
+  constructor(private employeeService: EmployeeService, private restaurantService: RestaurantService) { }
 
   ngOnInit() {
+    this.restaurantService.getRestaurantsList()
+    .subscribe( data => {
+      this.restaurants = data ;
+    });
+ 
   }
 
   newEmployee(): void {
